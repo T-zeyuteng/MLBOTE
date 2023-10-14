@@ -13,7 +13,7 @@ import argparse
 def main():   
     
     parser = argparse.ArgumentParser()
-    parser.add_argument('--dataset', '-d', type=str, default='emotions')
+    parser.add_argument('--dataset', '-d', type=str, default='emotions.arff')
     parser.add_argument('--n_labels', '-nl', type=int, default=None)
     parser.add_argument('--alpha_s', '-as', type=float, default=0.01)
     parser.add_argument('--th_c', '-tc', type=float, default=5)
@@ -33,6 +33,7 @@ def main():
     n_jobs_dist = args.n_jobdist #num of jobs for calculating pair-wise distances
     n_jobs_weight = args.n_jobweight #num of jobs for calculating seed sample weights
     
+    args.dataset = args.dataset[:-5]
     label_count_datasheet = {args.dataset: args.n_labels}
     DictdataName = {'emotions': 6, 'scene': 6,'yeast': 14,'medical': 45, 'enron': 53,'genbase': 27,'bibtex': 159,'corel5k':374 }
     if args.dataset in DictdataName:
